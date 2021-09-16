@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as uuid from 'uuid';
 
-export interface Task {
+export interface TaskInterface {
   id: string;
   title: string;
   isDone: boolean;
@@ -12,8 +12,8 @@ export interface Task {
   styleUrls: ['./todo-lists.component.scss'],
 })
 export class TodoListsComponent implements OnInit {
-  task1!: Task[];
-  task2!: Task[];
+  task1!: TaskInterface[];
+  task2!: TaskInterface[];
   constructor() {}
 
   ngOnInit(): void {

@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import * as uuid from 'uuid';
+import { TaskInterface } from '../../todo-lists.component';
 
 type Filters = 'all' | 'active' | 'completed';
 @Component({
@@ -8,7 +10,7 @@ type Filters = 'all' | 'active' | 'completed';
   styleUrls: ['./todo-list-item.component.scss'],
 })
 export class TodoListItemComponent implements OnInit {
-  @Input() tasks!: Task;
+  @Input() tasks!: TaskInterface[];
 
   form!: FormGroup;
   filters: Filters = 'all';
@@ -21,17 +23,17 @@ export class TodoListItemComponent implements OnInit {
   ngOnInit(): void {}
 
   addTask() {
-    // let newTask = {
-    //   id: uuid.v4(),
-    //   title: this.form.get('input')?.value,
-    //   isDone: true,
-    // };
-    // this.task1.push(newTask);
-    // this.form.reset();
+    let newTask = {
+      id: uuid.v4(),
+      title: this.form.get('input')?.value,
+      isDone: true,
+    };
+    this.tasks.push(newTask);
+    this.form.reset();
   }
 
   deleteTask(id: string) {
-    // this.task1 = this.task1.filter((task) => task.id != id);
+    this.tasks = this.tasks.filter((task) => task.id != id);
   }
 
   allFilter() {}
