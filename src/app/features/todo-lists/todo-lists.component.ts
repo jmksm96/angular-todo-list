@@ -42,6 +42,7 @@ export class TodoListsComponent implements OnInit {
     this.task2 = [
       { id: uuid.v4(), title: 'Buy computer', isDone: true },
       { id: uuid.v4(), title: 'Buy smartphone', isDone: true },
+      { id: uuid.v4(), title: 'Buy car', isDone: true },
     ];
   }
 }

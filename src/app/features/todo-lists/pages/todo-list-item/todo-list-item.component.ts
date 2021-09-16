@@ -11,7 +11,6 @@ type Filters = 'all' | 'active' | 'completed';
 })
 export class TodoListItemComponent implements OnInit {
   @Input() tasks!: TaskInterface[];
-
   form!: FormGroup;
   filters: Filters = 'all';
   constructor(private fb: FormBuilder) {
@@ -36,19 +35,13 @@ export class TodoListItemComponent implements OnInit {
     this.tasks = this.tasks.filter((task) => task.id != id);
   }
 
-  allFilter() {}
-
-  activeFilter(filter?: string) {
-    //   if (filter === 'active') {
-    //     let tasksForTodoList = this.task1;
-    //     this.task1 = this.task1.filter((t) => t.isDone === false);
-    //   }
-  }
-  completedFilter(filter?: string) {
-    //   if (filter === 'completed') {
-    //     let tasksForTodoList = this.task1;
-    //     tasksForTodoList = this.task1.filter((t) => t.isDone === true);
-    //     console.log(this.task1);
-    //   }
+  filterTasks(filter?: string) {
+    if (filter === 'active') {
+      this.tasks = this.tasks.filter((t) => t.isDone === false);
+    } else if (filter === 'completed') {
+      this.tasks = this.tasks.filter((t) => t.isDone === true);
+    } else if (filter === 'all') {
+      this.tasks;
+    }
   }
 }

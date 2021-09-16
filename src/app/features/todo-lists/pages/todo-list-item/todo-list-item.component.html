@@ -18,7 +18,8 @@
 
   <div class="todo-lists"
        *ngFor="let task of tasks">
-    <label nz-checkbox>{{task.title}} </label>
+    <label nz-checkbox
+           [ngModel]="task.isDone">{{task.title}} </label>
     <button nz-button
             class="btn-del"
             nzType="primary"
@@ -29,13 +30,14 @@
   <div class="filters">
     <button nz-button
             nzType="primary"
-            class="all">All</button>
+            class="all"
+            (click)="filterTasks('all')">All</button>
     <button nz-button
             nzType="primary"
             class="active"
-            (click)="activeFilter('active')">Active</button>
+            (click)="filterTasks('active')">Active</button>
     <button nz-button
             nzType="primary"
-            (click)="completedFilter('completed')">Completed</button>
+            (click)="filterTasks('completed')">Completed</button>
   </div>
 </div>
