@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as uuid from 'uuid';
+import { TodoListService } from '../../../services/todo-list.service';
 
 export interface TaskInterface {
   id: string;
@@ -14,7 +15,8 @@ export interface TaskInterface {
 export class TodoListsComponent implements OnInit {
   task1!: TaskInterface[];
   task2!: TaskInterface[];
-  constructor() {}
+  data!: any;
+  constructor(private todoListService: TodoListService) {}
 
   ngOnInit(): void {
     this.task1 = [
@@ -44,5 +46,12 @@ export class TodoListsComponent implements OnInit {
       { id: uuid.v4(), title: 'Buy smartphone', isDone: true },
       { id: uuid.v4(), title: 'Buy car', isDone: true },
     ];
+  }
+
+  getTodoLists() {
+    this.todoListService.getTodoLists().subscribe((res) => {
+      this.data = res;
+      console.log(res);
+    });
   }
 }

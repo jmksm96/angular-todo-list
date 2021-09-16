@@ -25,7 +25,7 @@ export class TodoListItemComponent implements OnInit {
     let newTask = {
       id: uuid.v4(),
       title: this.form.get('input')?.value,
-      isDone: true,
+      isDone: false,
     };
     this.tasks.push(newTask);
     this.form.reset();

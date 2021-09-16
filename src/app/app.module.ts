@@ -16,10 +16,11 @@ import { TodoListItemComponent } from './features/todo-lists/pages/todo-list-ite
 import { TodoListsComponent } from './features/todo-lists/todo-lists.component';
 import {NzIconModule} from 'ng-zorro-antd/icon';
 import {NzGridModule} from 'ng-zorro-antd/grid';
+import { AuthComponent } from './auth/auth.component';
 registerLocaleData(en);
 
 @NgModule({
-  declarations: [AppComponent, TodoListsComponent, TodoListItemComponent],
+  declarations: [AppComponent, TodoListsComponent, TodoListItemComponent, AuthComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

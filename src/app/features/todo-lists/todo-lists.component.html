@@ -1,4 +1,8 @@
 <div class="wrapper">
+  <button nz-button
+          nzType="primary"
+          type="submit"
+          (click)="getTodoLists()">Get todolists</button>
   <app-todo-list [tasks]=task1></app-todo-list>
   <app-todo-list [tasks]="task2"></app-todo-list>
 </div>
