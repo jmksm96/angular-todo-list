@@ -2,7 +2,7 @@ import { registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import en from '@angular/common/locales/en';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -15,6 +15,7 @@ import { AppComponent } from './app.component';
 import { TodoListItemComponent } from './features/todo-lists/pages/todo-list-item/todo-list-item.component';
 import { TodoListsComponent } from './features/todo-lists/todo-lists.component';
 import {NzIconModule} from 'ng-zorro-antd/icon';
+import {NzGridModule} from 'ng-zorro-antd/grid';
 registerLocaleData(en);
 
 @NgModule({
@@ -30,6 +31,8 @@ registerLocaleData(en);
     NzButtonModule,
     NzCheckboxModule,
     NzIconModule,
+    NzGridModule,
+    ReactiveFormsModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],

@@ -1,26 +1,41 @@
-<form class="form">
+<div class="wrapper">
   <h2 nz-typography>TodoList title</h2>
-  <input nz-input
-         placeholder="Basic usage"
-         class="input" />
-  <button nz-button
-          nzType="primary">+</button>
+  <form class="form"
+        [formGroup]="form">
+    <nz-form-item>
+      <nz-form-control>
+        <input nz-input
+               formControlName="input"
+               placeholder="Enter todolist title"
+               class="input" />
+      </nz-form-control>
+    </nz-form-item>
+    <button nz-button
+            nzType="primary"
+            (click)="addTask()"
+            type="submit">+</button>
+  </form>
+
   <div class="todo-lists"
-       *ngFor="let task of task1">
+       *ngFor="let task of tasks">
     <label nz-checkbox>{{task.title}} </label>
     <button nz-button
+            class="btn-del"
             nzType="primary"
             nzDanger
             (click)="deleteTask(task.id)">
-    Del</button>
+      Del</button>
   </div>
   <div class="filters">
     <button nz-button
-            nzType="primary">All</button>
+            nzType="primary"
+            class="all">All</button>
     <button nz-button
-            nzType="primary">Active</button>
+            nzType="primary"
+            class="active"
+            (click)="activeFilter('active')">Active</button>
     <button nz-button
-            nzType="primary">Completed</button>
+            nzType="primary"
+            (click)="completedFilter('completed')">Completed</button>
   </div>
-
-</form>
+</div>
