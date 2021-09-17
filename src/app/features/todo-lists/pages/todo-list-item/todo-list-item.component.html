@@ -1,5 +1,11 @@
 <div class="wrapper">
-  <h2 nz-typography>TodoList title</h2>
+  <div class="header">
+    <h2 nz-typography>{{title}}</h2>
+    <button nz-button
+            nzType="default"
+            (click)="addTodoList()"
+            type="submit">+</button>
+  </div>
   <form class="form"
         [formGroup]="form">
     <nz-form-item>
@@ -17,9 +23,8 @@
   </form>
 
   <div class="todo-lists"
-       *ngFor="let task of tasks">
-    <label nz-checkbox
-           [ngModel]="task.isDone">{{task.title}} </label>
+       *ngFor="let task of task">
+    <label nz-checkbox>{{task.title}} </label>
     <button nz-button
             class="btn-del"
             nzType="primary"
@@ -39,5 +44,7 @@
     <button nz-button
             nzType="primary"
             (click)="filterTasks('completed')">Completed</button>
+
   </div>
+
 </div>

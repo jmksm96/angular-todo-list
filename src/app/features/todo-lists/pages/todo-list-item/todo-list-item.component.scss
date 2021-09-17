@@ -1,4 +1,13 @@
 .wrapper {
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    h2 {
+      margin-bottom: 0;
+    }
+  }
   margin: 10px 30px;
   .form {
     display: flex;
