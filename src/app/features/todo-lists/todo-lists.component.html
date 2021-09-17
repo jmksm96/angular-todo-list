@@ -1,3 +1,13 @@
+<div class="header">
+  <input nz-input
+         formControlName="input"
+         placeholder="Enter todolist title"
+         class="input" />
+  <button nz-button
+          nzType="primary"
+          click="addTodoList()"
+          type="submit">+</button>
+</div>
 <div class="main">
   <div class="wrapper"
        *ngFor="let todolist of data">

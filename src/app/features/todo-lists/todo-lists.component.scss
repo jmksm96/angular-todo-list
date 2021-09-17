@@ -1,10 +1,19 @@
+.header {
+  flex: 1;
+  display: flex;
+  margin-top: 30px;
+  margin-left: 10px;
+  input {
+    width: 20%;
+  }
+}
 .main {
-  // flex-direction: row;
+  display: flex;
+  flex: 1;
 
-  // flex-direction: row;
   .wrapper {
     display: flex;
-
-    // width: 300px;
+    flex: 0 0 25%;
+    flex-wrap: wrap;
   }
 }

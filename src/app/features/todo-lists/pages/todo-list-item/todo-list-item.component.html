@@ -1,18 +1,19 @@
+<div class="header">
+  <h3 nz-typography>{{title}}</h3>
+  <button nz-button
+          nzDanger
+          click="deleteTodoList()"
+          type="submit">del</button>
+</div>
+
 <div class="wrapper">
-  <div class="header">
-    <h2 nz-typography>{{title}}</h2>
-    <button nz-button
-            nzType="default"
-            (click)="addTodoList()"
-            type="submit">+</button>
-  </div>
   <form class="form"
         [formGroup]="form">
     <nz-form-item>
       <nz-form-control>
         <input nz-input
                formControlName="input"
-               placeholder="Enter todolist title"
+               placeholder="Enter task title"
                class="input" />
       </nz-form-control>
     </nz-form-item>
