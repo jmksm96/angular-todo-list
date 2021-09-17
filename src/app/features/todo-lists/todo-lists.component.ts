@@ -8,7 +8,6 @@ import { TodoListService } from '../../../services/todo-list.service';
   styleUrls: ['./todo-lists.component.scss'],
 })
 export class TodoListsComponent implements OnInit {
-  tasks!: any;
   data!: TodoList[];
   constructor(private todoListService: TodoListService) {}
 

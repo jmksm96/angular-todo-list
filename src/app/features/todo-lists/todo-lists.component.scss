@@ -3,11 +3,13 @@
   display: flex;
   margin-top: 30px;
   margin-left: 10px;
+  flex-wrap: wrap;
   input {
     width: 20%;
   }
 }
 .main {
+  flex-wrap: wrap;
   display: flex;
   flex: 1;
 

@@ -1,10 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Tasks } from 'src/app/interface/tasks';
 import { TodoList } from 'src/app/interface/todolist';
 import * as uuid from 'uuid';
 import { TodoListService } from './../../../../../services/todo-list.service';
-import { TasksResponse } from './../../../../interface/tasks';
+import { Tasks } from './../../../../interface/tasks';
 
 type Filters = 'all' | 'active' | 'completed';
 @Component({
@@ -13,7 +12,6 @@ type Filters = 'all' | 'active' | 'completed';
   styleUrls: ['./todo-list-item.component.scss'],
 })
 export class TodoListItemComponent implements OnInit {
-  @Input() tasks!: TasksResponse;
   @Input() id!: string;
   @Input() title!: string;
   @Output() todolistsOutput: EventEmitter<TodoList[]> = new EventEmitter<
@@ -35,14 +33,7 @@ export class TodoListItemComponent implements OnInit {
     });
   }
 
-  addTodoList() {
-    // let newTodoList = {
-    //   id: uuid.v4(),
-    //   title: 'Title',
-    // };
-    // this.todolists.push(newTodoList);
-    // this.todolistsOutput.emit(this.todolists);
-  }
+  addTodoList() {}
 
   addTask() {
     let newTask = {
@@ -50,12 +41,12 @@ export class TodoListItemComponent implements OnInit {
       title: this.form.get('input')?.value,
       isDone: false,
     };
-    this.tasks.items.push(newTask);
+    this.task.push(newTask);
     this.form.reset();
   }
 
   deleteTask(id: string) {
-    this.tasks.items = this.tasks.items.filter((task) => task.id != id);
+    this.task = this.task.filter((task) => task.id != id);
   }
 
   filterTasks(filter?: string) {
