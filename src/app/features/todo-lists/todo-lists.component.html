@@ -1,25 +1,49 @@
-<div class="header">
-  <h3 nz-typography>Create new TodoList</h3>
-  <form [formGroup]="form">
-    <nz-form-item>
-      <nz-form-control>
-        <input nz-input
-               formControlName="input"
-               placeholder="Enter todolist title"
-               class="input" />
-      </nz-form-control>
-    </nz-form-item>
-    <button nz-button
-            nzType="primary"
-            (click)="addTodoList(form.get('input')?.value)"
-            type="submit">+</button>
-  </form>
-</div>
+<nz-layout class="layout">
+  <nz-sider>
+    <div class="logo"></div>
+    <ul nz-menu
+        nzTheme="dark"
+        nzMode="inline">
+      <li nz-menu-item>
+        <i nz-icon
+           nzType="user"></i>
+        <span>Auth</span>
+      </li>
+      <li nz-menu-item>
+        <i nz-icon
+           nzType="file"></i>
+        <span>API-Docs</span>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout class="right-layout">
+    <nz-content>
+      <div class="header inner-content ">
+        <h3 nz-typography>Create new TodoList</h3>
+        <form [formGroup]="form">
+          <nz-form-item>
+            <nz-form-control>
+              <input nz-input
+                     formControlName="input"
+                     placeholder="Enter todolist title"
+                     class="input" />
+            </nz-form-control>
+          </nz-form-item>
+          <button nz-button
+                  nzType="primary"
+                  (click)="addTodoList(form.get('input')?.value)"
+                  type="submit">+</button>
+        </form>
+      </div>
 
-<div class="main">
-  <div class="wrapper"
-       *ngFor="let todolist of data">
-    <app-todo-list [id]="todolist.id"
-                   [title]="todolist.title"></app-todo-list>
-  </div>
-</div>
+      <div class="main">
+        <div class="wrapper"
+             *ngFor="let todolist of data">
+          <app-todo-list [id]="todolist.id"
+                         [title]="todolist.title"></app-todo-list>
+        </div>
+      </div>
+    </nz-content>
+    <nz-footer>Develop by Max Yarosh on Angular 12</nz-footer>
+  </nz-layout>
+</nz-layout>

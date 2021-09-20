@@ -17,6 +17,9 @@ import { TodoListsComponent } from './features/todo-lists/todo-lists.component';
 import {NzIconModule} from 'ng-zorro-antd/icon';
 import {NzGridModule} from 'ng-zorro-antd/grid';
 import { AuthComponent } from './auth/auth.component';
+import {NzLayoutModule} from 'ng-zorro-antd/layout';
+import {NzMenuModule} from 'ng-zorro-antd/menu';
+import {NzBreadCrumbModule} from 'ng-zorro-antd/breadcrumb';
 registerLocaleData(en);
 
 @NgModule({
@@ -34,6 +37,9 @@ registerLocaleData(en);
     NzIconModule,
     NzGridModule,
     ReactiveFormsModule,
+    NzLayoutModule,
+    NzMenuModule,
+    NzBreadCrumbModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],

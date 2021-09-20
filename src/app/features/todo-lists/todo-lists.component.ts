@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TodoList } from 'src/app/interface/todolist';
 import { TodoListService } from 'src/services/todo-list.service';
@@ -8,6 +8,7 @@ import { v4 } from 'uuid';
   selector: 'app-todo-lists',
   templateUrl: './todo-lists.component.html',
   styleUrls: ['./todo-lists.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class TodoListsComponent implements OnInit {
   data!: TodoList[];
