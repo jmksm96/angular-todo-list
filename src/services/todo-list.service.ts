@@ -10,6 +10,7 @@ import { TasksResponse } from './../app/interface/tasks';
 export class TodoListService {
   baseURL = 'https://social-network.samuraijs.com/api/1.1';
   API_KEY = '7c107b4d-cd0a-4372-844b-6a20a61a6e27';
+  body = {};
   constructor(private http: HttpClient) {}
 
   getTodoLists(): Observable<TodoList[]> {
@@ -23,6 +24,18 @@ export class TodoListService {
       this.baseURL + `/todo-lists/${id}/tasks`,
       {
         withCredentials: true,
+      }
+    );
+  }
+
+  deleteTask(todoId: string, taskID: string): Observable<TasksResponse> {
+    return this.http.delete<TasksResponse>(
+      this.baseURL + `/todo-lists/${todoId}/tasks/${taskID}`,
+      {
+        params: {
+          withCredentials: true,
+          'API-KEY': this.API_KEY,
+        },
       }
     );
   }

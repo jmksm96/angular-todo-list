@@ -45,8 +45,9 @@ export class TodoListItemComponent implements OnInit {
     this.form.reset();
   }
 
-  deleteTask(id: string) {
+  deleteTask(todoId: string, id: string) {
     this.task = this.task.filter((task) => task.id != id);
+    this.dataService.deleteTask(todoId, id).subscribe(() => {});
   }
 
   filterTasks(filter?: string) {
