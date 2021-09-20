@@ -17,11 +17,17 @@ export class TodoListService {
   getTodoLists(): Observable<TodoList[]> {
     return this.http.get<TodoList[]>(this.baseURL + '/todo-lists', {
       withCredentials: true,
+      headers: {
+        'API-KEY': '7c107b4d-cd0a-4372-844b-6a20a61a6e27',
+      },
     });
   }
   deleteTodoList(todoID: string): Observable<any> {
     return this.http.delete<any>(this.baseURL + `/todo-lists/${todoID}`, {
       withCredentials: true,
+      headers: {
+        'API-KEY': '7c107b4d-cd0a-4372-844b-6a20a61a6e27',
+      },
     });
   }
 
@@ -31,6 +37,9 @@ export class TodoListService {
       { title: title },
       {
         withCredentials: true,
+        headers: {
+          'API-KEY': '7c107b4d-cd0a-4372-844b-6a20a61a6e27',
+        },
       }
     );
   }
@@ -42,6 +51,9 @@ export class TodoListService {
       this.baseURL + `/todo-lists/${id}/tasks`,
       {
         withCredentials: true,
+        headers: {
+          'API-KEY': '7c107b4d-cd0a-4372-844b-6a20a61a6e27',
+        },
       }
     );
   }
@@ -51,6 +63,9 @@ export class TodoListService {
       this.baseURL + `/todo-lists/${todoID}/tasks/${taskID}`,
       {
         withCredentials: true,
+        headers: {
+          'API-KEY': '7c107b4d-cd0a-4372-844b-6a20a61a6e27',
+        },
       }
     );
   }
@@ -59,7 +74,12 @@ export class TodoListService {
     return this.http.post<TasksResponse>(
       this.baseURL + `/todo-lists/${todoID}/tasks`,
       { title: taskTitle },
-      { withCredentials: true }
+      {
+        withCredentials: true,
+        headers: {
+          'API-KEY': '7c107b4d-cd0a-4372-844b-6a20a61a6e27',
+        },
+      }
     );
   }
 }
