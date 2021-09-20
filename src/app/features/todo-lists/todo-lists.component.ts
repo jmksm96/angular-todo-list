@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { TodoList } from 'src/app/interface/todolist';
-import { TodoListService } from '../../../services/todo-list.service';
+import { TodoListService } from 'src/services/todo-list.service';
+import { v4 } from 'uuid';
 
 @Component({
   selector: 'app-todo-lists',
@@ -9,15 +11,31 @@ import { TodoListService } from '../../../services/todo-list.service';
 })
 export class TodoListsComponent implements OnInit {
   data!: TodoList[];
-  constructor(private todoListService: TodoListService) {}
-
+  form!: FormGroup;
+  constructor(
+    private todoListService: TodoListService,
+    private fb: FormBuilder
+  ) {
+    this.form = this.fb.group({
+      input: this.fb.control(''),
+    });
+  }
   ngOnInit(): void {
     this.todoListService.getTodoLists().subscribe((res) => {
       this.data = res;
       console.log(res);
     });
   }
-  addTodoList(todolist: TodoList[]) {
-    this.data = { ...this.data, ...todolist };
+
+  addTodoList(title: string) {
+    let newTodo = {
+      id: v4(),
+      title: title,
+      addedDate: 'date',
+      order: 1,
+    };
+    this.data.push(newTodo);
+    this.form.reset();
+    this.todoListService.createTodoList(title).subscribe(() => {});
   }
 }

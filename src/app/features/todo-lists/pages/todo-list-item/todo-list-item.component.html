@@ -2,7 +2,7 @@
   <h3 nz-typography>{{title}}</h3>
   <button nz-button
           nzDanger
-          click="deleteTodoList()"
+          (click)="deleteTodoList(id)"
           type="button">del</button>
 </div>
 
@@ -19,13 +19,14 @@
     </nz-form-item>
     <button nz-button
             nzType="primary"
-            (click)="addTask()"
+            (click)="addTask(id)"
             type="submit">+</button>
   </form>
 
   <div class="todo-lists"
        *ngFor="let task of task">
-    <label nz-checkbox>{{task.title}} </label>
+    <label nz-checkbox
+           [nzChecked]="task.status == 2">{{task.title}} </label>
     <button nz-button
             class="btn-del"
             nzType="primary"
