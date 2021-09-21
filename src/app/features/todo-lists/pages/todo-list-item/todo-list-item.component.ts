@@ -32,6 +32,7 @@ export class TodoListItemComponent implements OnInit {
   constructor(private fb: FormBuilder, private dataService: TodoListService) {
     this.form = this.fb.group({
       input: this.fb.control(''),
+      title: this.fb.control(''),
     });
   }
 
@@ -41,7 +42,11 @@ export class TodoListItemComponent implements OnInit {
     });
   }
 
-  addTodoList() {}
+  updateTodoList(todoListID: string) {
+    this.dataService
+      .updateTodoList(todoListID, this.form.get('title')?.value)
+      .subscribe(() => {});
+  }
 
   addTask(todoId: string = '') {
     let newTask = {

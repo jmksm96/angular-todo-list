@@ -43,7 +43,18 @@ export class TodoListService {
       }
     );
   }
-
+  updateTodoList(todolistId: string, title: string): Observable<any> {
+    return this.http.put(
+      this.baseURL + `/todo-lists/${todolistId}`,
+      { title },
+      {
+        withCredentials: true,
+        headers: {
+          'API-KEY': '7c107b4d-cd0a-4372-844b-6a20a61a6e27',
+        },
+      }
+    );
+  }
   //*Tasks Methods
 
   getTasks(id: string): Observable<TasksResponse> {

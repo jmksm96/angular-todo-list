@@ -1,32 +1,45 @@
-<div class="header">
-  <h3 nz-typography>{{title}}</h3>
-  <button nz-button
-          nzDanger
-          (click)="deleteTodoList(id)"
-          type="button">del</button>
-</div>
-
 <div class="wrapper">
   <form class="form"
         [formGroup]="form">
-    <nz-form-item>
-      <nz-form-control>
-        <input nz-input
-               formControlName="input"
-               placeholder="Enter task title"
-               class="input" />
-      </nz-form-control>
-    </nz-form-item>
-    <button nz-button
-            nzType="primary"
-            (click)="addTask(id)"
-            type="submit">+</button>
+    <div class="header">
+      <h3 nz-typography
+          [nzEditable]="true">{{title}}</h3>
+      <!-- <input nz-input
+             [ngModel]="title"
+             class="title"
+             nzBorderless
+             formControlName="title"
+             (onblur)="updateTodoList(id)" /> -->
+      <button nz-button
+              nzDanger
+              (click)="deleteTodoList(id)"
+              type="button">del</button>
+    </div>
+    <div class="new-todo-area">
+      <nz-form-item>
+        <nz-form-control>
+          <input nz-input
+                 formControlName="input"
+                 placeholder="Enter task title"
+                 class="input" />
+        </nz-form-control>
+      </nz-form-item>
+      <button nz-button
+              nzType="primary"
+              (click)="addTask(id)"
+              type="submit">+</button>
+    </div>
   </form>
 
   <div class="todo-lists"
        *ngFor="let task of task">
     <label nz-checkbox
-           [nzChecked]="task.status == 2">{{task.title}} </label>
+           [nzChecked]="task.status == 2"> </label>
+    <input nz-input
+           placeholder="borderless"
+           nzBorderless
+           [value]="task.title" />
+
     <button nz-button
             class="btn-del"
             nzType="primary"

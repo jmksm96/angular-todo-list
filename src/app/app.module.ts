@@ -17,18 +17,12 @@ import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthComponent } from './auth/auth.component';
 import { TodoListItemComponent } from './features/todo-lists/pages/todo-list-item/todo-list-item.component';
 import { TodoListsComponent } from './features/todo-lists/todo-lists.component';
-import { LoginComponent } from './features/login/login.component';
 
 registerLocaleData(en);
 @NgModule({
-  declarations: [
-    AppComponent,
-    TodoListsComponent,
-    TodoListItemComponent,
-  ],
+  declarations: [AppComponent, TodoListsComponent, TodoListItemComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
