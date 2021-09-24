@@ -1,10 +1,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  EventEmitter,
   Input,
   OnInit,
-  Output,
 } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TodoList } from 'src/app/interface/todolist';
@@ -21,9 +19,7 @@ type Filters = 'all' | 'active' | 'completed';
 export class TodoListItemComponent implements OnInit {
   @Input() id!: string;
   @Input() title!: string;
-  @Output() todolistsOutput: EventEmitter<TodoList[]> = new EventEmitter<
-    TodoList[]
-  >();
+
   form!: FormGroup;
   todolists: TodoList[] = [];
   filters: Filters = 'all';
@@ -58,7 +54,6 @@ export class TodoListItemComponent implements OnInit {
       title: this.form.get('input')?.value,
       status: 0,
     };
-
     this.dataService.addTask(todoId, newTask.title).subscribe(() => {
       this.task.push(newTask);
       this.form.reset();
