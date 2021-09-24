@@ -29,23 +29,27 @@ export class TodoListItemComponent implements OnInit {
   filters: Filters = 'all';
   task!: Tasks[];
   filteredTasks!: Tasks[];
-  constructor(private fb: FormBuilder, private dataService: TodoListService) {
+  constructor(private fb: FormBuilder, private dataService: TodoListService) {}
+
+  ngOnInit(): void {
+    this.getTasks();
     this.form = this.fb.group({
       input: this.fb.control(''),
       title: this.fb.control(''),
+      taskLabel: this.fb.control(this.task),
     });
   }
-
-  ngOnInit(): void {
+  getTasks() {
     this.dataService.getTasks(this.id).subscribe((res) => {
       this.task = res.items;
     });
   }
 
-  updateTodoList(todoListID: string) {
-    this.dataService
-      .updateTodoList(todoListID, this.form.get('title')?.value)
-      .subscribe(() => {});
+  updateTodoList(todoListID?: string) {
+    // this.dataService
+    //   .updateTodoList(todoListID, this.form.get('title')?.value)
+    //   .subscribe(() => {});
+    console.log(this.form.value);
   }
 
   addTask(todoId: string = '') {
@@ -54,14 +58,17 @@ export class TodoListItemComponent implements OnInit {
       title: this.form.get('input')?.value,
       status: 0,
     };
-    this.task.push(newTask);
-    this.form.reset();
-    this.dataService.addTask(todoId, newTask.title).subscribe(() => {});
+
+    this.dataService.addTask(todoId, newTask.title).subscribe(() => {
+      this.task.push(newTask);
+      this.form.reset();
+    });
   }
 
   deleteTask(todoId: string, id: string) {
-    this.task = this.task.filter((task) => task.id != id);
-    this.dataService.deleteTask(todoId, id).subscribe(() => {});
+    this.dataService.deleteTask(todoId, id).subscribe(() => {
+      this.task = this.task.filter((task) => task.id != id);
+    });
   }
 
   filterTasks(filter?: string) {
@@ -71,12 +78,6 @@ export class TodoListItemComponent implements OnInit {
     if (filter === 'completed') {
       this.task.filter((t) => t.status === TaskStatuses.Completed);
     }
-    // } else if (filter === 'completed') {
-    //   this.done = this.tasks.filter((t) => t.isDone === true);
-    // } else if (filter === 'all') {
-    //   this.tasks;
-    // }
-    // return [];
   }
   deleteTodoList(todoID: string) {
     this.dataService.deleteTodoList(todoID).subscribe(() => {});

@@ -13,7 +13,10 @@
       <button nz-button
               nzDanger
               (click)="deleteTodoList(id)"
-              type="button">del</button>
+              type="button">
+        <i nz-icon
+           nzType="delete"
+           nzTheme="fill"></i></button>
     </div>
     <div class="new-todo-area">
       <nz-form-item>
@@ -29,36 +32,41 @@
               (click)="addTask(id)"
               type="submit">+</button>
     </div>
+
+    <div class="todo-lists"
+         *ngFor="let task of task">
+      <label nz-checkbox
+             [nzChecked]="task.status == 2"></label>
+      <input nz-input
+             [placeholder]="task.title"
+             (blur)="updateTodoList()"
+             nzBorderless
+             formControlName="taskLabel"
+             [value]="task.title" />
+
+      <button nz-button
+              class="btn-del"
+              nzType="primary"
+              nzDanger
+              (click)="deleteTask(id,task.id)">
+        <i nz-icon
+           nzType="delete"
+           nzTheme="fill"> </i>
+      </button>
+    </div>
+    <div class="filters">
+      <button nz-button
+              nzType="primary"
+              class="all"
+              (click)="filterTasks('all')">All</button>
+      <button nz-button
+              nzType="primary"
+              class="active"
+              (click)="filterTasks('active')">Active</button>
+      <button nz-button
+              nzType="primary"
+              (click)="filterTasks('completed')">Completed</button>
+
+    </div>
   </form>
-
-  <div class="todo-lists"
-       *ngFor="let task of task">
-    <label nz-checkbox
-           [nzChecked]="task.status == 2"> </label>
-    <input nz-input
-           placeholder="borderless"
-           nzBorderless
-           [value]="task.title" />
-
-    <button nz-button
-            class="btn-del"
-            nzType="primary"
-            nzDanger
-            (click)="deleteTask(id,task.id)">
-      Del</button>
-  </div>
-  <div class="filters">
-    <button nz-button
-            nzType="primary"
-            class="all"
-            (click)="filterTasks('all')">All</button>
-    <button nz-button
-            nzType="primary"
-            class="active"
-            (click)="filterTasks('active')">Active</button>
-    <button nz-button
-            nzType="primary"
-            (click)="filterTasks('completed')">Completed</button>
-
-  </div>
 </div>

@@ -22,10 +22,7 @@ export class TodoListsComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    this.todoListService.getTodoLists().subscribe((res) => {
-      this.data = res;
-      console.log(res);
-    });
+    this.loadData();
   }
 
   addTodoList(title: string) {
@@ -35,8 +32,16 @@ export class TodoListsComponent implements OnInit {
       addedDate: 'date',
       order: 1,
     };
-    this.data.push(newTodo);
-    this.form.reset();
-    this.todoListService.createTodoList(title).subscribe(() => {});
+
+    this.todoListService.createTodoList(title).subscribe(() => {
+      this.data.push(newTodo);
+      this.form.reset();
+    });
+  }
+
+  loadData() {
+    this.todoListService.getTodoLists().subscribe((res) => {
+      this.data = res;
+    });
   }
 }
