@@ -35,8 +35,7 @@
 
     <div class="todo-lists"
          *ngFor="let task of task">
-      <label nz-checkbox
-             [nzChecked]="task.status == 2"></label>
+      <label nz-checkbox></label>
       <input nz-input
              [placeholder]="task.title"
              (blur)="updateTodoList()"
