@@ -32,17 +32,16 @@
               (click)="addTask(id)"
               type="submit">+</button>
     </div>
-
     <div class="todo-lists"
          *ngFor="let task of task">
       <label nz-checkbox></label>
-      <input nz-input
+      <!-- <input nz-input
              [placeholder]="task.title"
              (blur)="updateTodoList()"
              nzBorderless
              formControlName="taskLabel"
-             [value]="task.title" />
-
+             [value]="task.title" /> -->
+      <span>{{task.title}}</span>
       <button nz-button
               class="btn-del"
               nzType="primary"
