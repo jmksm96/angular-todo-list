@@ -15,6 +15,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { DirectivesModule } from '../directives/directives.module';
 const icons: IconDefinition[] = [AccountBookFill, AlertOutline, AlertFill];
 @NgModule({
   declarations: [],
@@ -29,10 +30,10 @@ const icons: IconDefinition[] = [AccountBookFill, AlertOutline, AlertFill];
     NzLayoutModule,
     NzMenuModule,
     NzBreadCrumbModule,
-
     NzLayoutModule,
     NzGridModule,
     NzTypographyModule,
+    DirectivesModule,
   ],
 })
 export class SharedModule {}

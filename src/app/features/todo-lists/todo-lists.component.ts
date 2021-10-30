@@ -13,6 +13,8 @@ import { v4 } from 'uuid';
 export class TodoListsComponent implements OnInit {
   data!: TodoList[];
   form!: FormGroup;
+  // isChanged!: boolean;
+
   constructor(
     private todoListService: TodoListService,
     private fb: FormBuilder
@@ -21,9 +23,15 @@ export class TodoListsComponent implements OnInit {
       input: this.fb.control(''),
     });
   }
+
   ngOnInit(): void {
     this.loadData();
   }
+
+  // @HostListener('dblclick') onDblClick() {
+  //   this.isChanged = true;
+  //   console.log(this.isChanged);
+  // }
 
   addTodoList(title: string) {
     let newTodo = {
@@ -44,4 +52,6 @@ export class TodoListsComponent implements OnInit {
       this.data = res;
     });
   }
+
+  editableSpan() {}
 }

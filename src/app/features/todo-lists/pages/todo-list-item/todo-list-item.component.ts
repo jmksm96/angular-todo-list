@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  HostListener,
   Input,
   OnInit,
 } from '@angular/core';
@@ -25,7 +26,20 @@ export class TodoListItemComponent implements OnInit {
   filters: Filters = 'all';
   task!: Tasks[];
   filteredTasks!: Tasks[];
+  isInput!: boolean;
+
   constructor(private fb: FormBuilder, private dataService: TodoListService) {}
+
+  @HostListener('dblclick') onClick() {
+    const span = document.getElementById('.task');
+
+    // this.isInput = true;
+    console.log(span);
+  }
+
+  editSpan() {
+    console.log('clicked');
+  }
 
   ngOnInit(): void {
     this.getTasks();
@@ -35,6 +49,7 @@ export class TodoListItemComponent implements OnInit {
       taskLabel: this.fb.control(this.task),
     });
   }
+
   getTasks() {
     this.dataService.getTasks(this.id).subscribe((res) => {
       this.task = res.items;

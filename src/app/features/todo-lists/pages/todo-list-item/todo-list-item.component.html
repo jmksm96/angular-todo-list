@@ -2,8 +2,7 @@
   <form class="form"
         [formGroup]="form">
     <div class="header">
-      <h3 nz-typography
-          [nzEditable]="true">{{title}}</h3>
+      <h3 nz-typography>{{title}}</h3>
       <!-- <input nz-input
              [ngModel]="title"
              class="title"
@@ -35,13 +34,15 @@
     <div class="todo-lists"
          *ngFor="let task of task">
       <label nz-checkbox></label>
-      <!-- <input nz-input
+      <input nz-input
+             *ngIf="isInput"
              [placeholder]="task.title"
              (blur)="updateTodoList()"
-             nzBorderless
              formControlName="taskLabel"
-             [value]="task.title" /> -->
-      <span>{{task.title}}</span>
+             [value]="task.title" />
+      <span class="task"
+            *ngIf="!isInput"
+            (click)="editSpan()">{{task.title}}</span>
       <button nz-button
               class="btn-del"
               nzType="primary"

@@ -2,7 +2,11 @@
   flex-wrap: wrap;
   text-align: center;
   margin: 30px 0;
-
+  input {
+    display: flex;
+    order: -1;
+    margin-left: 25px;
+  }
   form {
     justify-content: center;
     margin: 0 auto;
